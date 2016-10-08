@@ -20,7 +20,12 @@ angular.module('shortly', [
     .when('/links', {
       templateUrl: 'app/links/links.html',
       controller: 'LinksController',
-      authenticate: true
+      authenticate: true,
+      resolve: {
+        LinkList: function(Links) {
+          return Links.getAll();
+        }
+      }
     })
 
     .when('/shorten', {

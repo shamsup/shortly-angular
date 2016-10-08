@@ -1,10 +1,11 @@
 'use strict';
 
 describe('Routing', function () {
-  var $route;
+  var $route, $httpBackend, LinkList, Auth, isAuth_OLD;
   beforeEach(module('shortly'));
 
   beforeEach(inject(function ($injector) {
+    $httpBackend = $injector.get('$httpBackend');
     $route = $injector.get('$route');
   }));
 
@@ -40,5 +41,10 @@ describe('Routing', function () {
 
   it('Should redirect to /links for unknown routes', function () {
     expect($route.routes['null'].redirectTo).to.equal('/links');
+  });
+
+  it('Should resolve LinkList prior to invoking the LinksController', function () {
+    expect($route.routes['/links'].resolve).to.be.an('object');
+    expect($route.routes['/links'].resolve.LinkList).to.be.a('function');
   });
 });
