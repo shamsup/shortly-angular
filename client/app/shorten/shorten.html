@@ -1,0 +1,17 @@
+<div id='container'>
+  <form name='shorten' ng-submit='addLink(url)' novalidate>
+    <input type='text' name='url' class="text" ng-model='url' placeholder='Enter a url' required/>
+    <input type='submit' value='Shorten' />
+  </form>
+  <img class='spinner' src='/assets/spiffygif_46x46.gif' ng-show='loading'/>
+  <div class='error' ng-show='error'>{{ url }}is not a valid url</div>
+  <div class="link" ng-show='fetched'>
+    <img src='/assets/redirect_icon.png'/>
+    <div class='info'>
+      <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+      <div class='title'>{{link.title}}</div>
+      <div class='original'>{{link.url}}</div>
+      <a href="{{link.baseUrl + '/' + link.code}}">{{link.baseUrl + '/' + link.code}}</a>
+    </div>
+  </div>
+</div>

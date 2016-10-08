@@ -1,0 +1,20 @@
+<div id='signup'>
+  <h1>Sign up</h1>
+  <div class="error" ng-show='error'>{{ message }}</div>
+  <form class="signup-form" name="signupForm" ng-submit='signup()' novalidate>
+    <input type='text' name='username' placeholder='username' ng-model='user.username' required ng-minlength='5' ng-maxlength='20'>
+    <div class="validation-message">
+      <span class="validation-error" ng-show='!signupForm.username.$pristine && (signupForm.username.$error.minlength || signupForm.username.$error.maxlength || signupForm.username.$error.required)'>
+        Your username must be between 5 and 20 characters
+      </span>
+    </div>
+    <input type="password" name='password' placeholder='password' ng-model='user.password' ng-minlength='8' required>
+    <div class="validation-message">
+      <span class="validation-error" ng-show='!signupForm.password.$pristine && (signupForm.password.$error.minlength || signupForm.password.$error.required)'>
+        Your password must be at least 8 characters
+      </span>
+    </div>
+    <button>sign up</button>
+  </form>
+  <a href="#signin">Already have an account? <strong>Sign in</strong> ...</a>
+</div>

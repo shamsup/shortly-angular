@@ -1,0 +1,20 @@
+<div id='signin'>
+  <h1>Sign in</h1>
+  <div class="error" ng-show='error'>{{ message }}</div>
+  <form class="signin-form" name="signinForm" ng-submit='signin()' novalidate>
+    <input type='text' name='username' placeholder='username' ng-model='user.username' required>
+    <div class="validation-message">
+      <span class="validation-error" ng-show='signinForm.$submitted && signinForm.username.$error.required'>
+        Your username is required
+      </span>
+    </div>
+    <input type="password" name='password' placeholder='password' ng-model='user.password' required>
+    <div class="validation-message">
+      <span class="validation-error" ng-show='signinForm.$submitted && signinForm.password.$error.required'>
+        Your password is required
+      </span>
+    </div>
+    <button>sign in</button>
+  </form>
+  <a href="#signup">Don't have an account? <strong>Sign up</strong> ...</a>
+</div>
